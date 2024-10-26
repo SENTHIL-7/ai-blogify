@@ -8,4 +8,24 @@ $text-color:#333;
   --secondary-color: #333;
   --text-color: #333;
   --background-color: #fff;
+  --circle-color-1: rgba(235, 137, 224, 0.4);
+  --circle-color-2: rgba(123, 97, 255, 0.35);
+  --circle-color-3: rgba(255, 175, 64, 0.4);
+}
+*{
+  margin: 0px;
+  padding: 0px;
+  color : var(--text-color)
+}
+[data-theme="dark"] {
+  --background-color: #1a1a1a; /* Dark theme background */
+  --text-color: #f0f0f0; /* Dark theme text */
+  --primary-color: #d474d1;
+}
+
+/* Apply theme variables to body */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
 }

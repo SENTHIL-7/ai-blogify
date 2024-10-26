@@ -2,6 +2,9 @@
   <div class="navbar-logo">
     <a href="/">My Blog</a>
   </div>
+  <button (click)="toggleTheme()" class="theme-toggle">
+    {{ isDarkMode ? '🌞 Light Mode' : '🌙 Dark Mode' }}
+  </button>
   <div class="navbar-right">
     @if(isLoggedIn){
        <!-- User Profile Section -->

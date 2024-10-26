@@ -53,6 +53,7 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   min-width: 150px;
   animation: slideDown 0.3s ease;
+  z-index: 1;
 }
 
 .dropdown-content a {
@@ -91,4 +92,18 @@
 
 .login-button:hover {
   background-color: #0056b3;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 5px 10px;
+  transition: color 0.3s;
+}
+
+.theme-toggle:hover {
+  color: var(--primary-color);
 }

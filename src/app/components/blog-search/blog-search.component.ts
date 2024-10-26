@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Blog, BLOGS } from '../../constants/blog.constants';
 import { BlogCardComponent } from "../blog-card/blog-card.component";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-blog-search',
   standalone: true,
-  imports: [BlogCardComponent],
+  imports: [BlogCardComponent,FormsModule],
   templateUrl: './blog-search.component.html',
   styleUrl: './blog-search.component.scss'
 })
@@ -31,8 +32,8 @@ export class BlogSearchComponent implements OnInit  {
     this.totalPages = Math.ceil(this.filteredBlogs.length / this.pageSize);
     this.updatePaginatedBlogs();
   }
-  onSearch(event:any){
-     this.searchQuery=event?.target?.value;
+  onSearch(){
+    this.filterBlogs()
   }
 
   // Method to filter blogs based on search query
