@@ -1,0 +1,34 @@
+<div class="blog-search-container">
+  <div class="flex flex-end">
+    <input type="text" placeholder="Search blogs..." (input)="onSearch($event)" class="blog-search-input" />
+    <button class="blog-search-button" (click)="filterBlogs()">Search</button>
+  </div>
+  @if(paginatedBlogs.length){
+  <div class="blog-list">
+    <!-- let blog of filteredBlogs -->
+
+    @for(blog of paginatedBlogs;track i;let i= $index){
+    <app-blog-card [blog]="blog"></app-blog-card>
+    }
+  </div>
+  <div class="paginator-container">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+  }
+  @else {
+   <div class="flex flex-center">
+    <div class="no-results-container">
+      <div class="no-results-animation">
+        <img
+          src="https://ouch-cdn2.icons8.com/lmIhjGb08SHwj2F42VBILBiofIxtSePyKKuteXtoUxA/rs:fit:368:276/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvNDQ5/L2FhOGJjN2ZkLTY3/ZmEtNGM4OC1iYWFm/LTRjNDgwZGJmNjQ3/Yy5zdmc.png"
+          alt="No Results Found" class="no-results-image" />
+        <p class="no-results-text">Oops! We couldn't find any blogs matching your search.</p>
+        <p class="suggestion-text">Try searching with different keywords or browse our latest blogs.</p>
+      </div>
+    </div>
+   </div>
+  }
+
+</div>

@@ -1,0 +1,27 @@
+<div class="auth-container">
+  <div class="auth-box">
+    <h2 class="auth-title">Login</h2>
+    <!-- Email Login Form -->
+    <form (submit)="onEmailLogin()">
+      <div class="input-container">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="Enter your email" required />
+      </div>
+      <div class="input-container">
+        <label>Password</label>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Enter your password" required />
+      </div>
+      <button type="submit" class="auth-button">Login with Email</button>
+    </form>
+
+    <!-- OR Divider -->
+    <div class="or-divider">
+      <span>OR</span>
+    </div>
+
+    <!-- OAuth Login Button -->
+    <button type="button" class="auth-button oauth-button" (click)="loginWithOAuth()">
+      Login with Google
+    </button>
+  </div>
+</div>

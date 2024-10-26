@@ -1,0 +1,20 @@
+<div class="comments-section">
+  <h3>Comments</h3>
+  <div class="comment-form">
+    <input type="text" [(ngModel)]="username" placeholder="Your Name" />
+    <textarea [(ngModel)]="newComment" placeholder="Add a comment..." rows="4"></textarea>
+    <br>
+    <button (click)="addComment()">Submit</button>
+  </div>
+
+  <div class="comments-list">
+    @for(comment of comments; track i ;let i = $index){
+    <div class="comment">
+      <strong>{{ comment.username }}</strong>
+      <p>{{ comment.content }}</p>
+      <span>{{ comment.date | date:'short' }}</span>
+    </div>
+    }
+
+  </div>
+</div>

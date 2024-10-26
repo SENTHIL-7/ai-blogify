@@ -1,0 +1,31 @@
+<nav class="navbar">
+  <div class="navbar-logo">
+    <a href="/">My Blog</a>
+  </div>
+  <div class="navbar-right">
+    @if(isLoggedIn){
+       <!-- User Profile Section -->
+      <div class="profile-dropdown">
+        <img
+          [src]="userProfileImage"
+          alt="User Profile"
+          class="profile-image"
+          (click)="toggleDropdown()"
+        />
+        @if(dropdownOpen){
+          <div class="dropdown-content" >
+            <a href="/profile">My Profile</a>
+            <a href="/settings">Settings</a>
+            <a href="#" (click)="logout()">Logout</a>
+          </div>
+        }
+
+      </div>
+    }
+    @else {
+            <!-- Login Button for Guests -->
+            <button class="login-button" (click)="navigateToLogin()">Login</button>
+    }
+  </div>
+</nav>
+<router-outlet></router-outlet>

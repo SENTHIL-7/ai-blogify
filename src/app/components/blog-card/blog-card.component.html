@@ -1,0 +1,13 @@
+<div class="blog-card">
+  <div class="blog-card-header">
+    <img class="blog-card-image" [ngSrc]="blog.imageUrl" width="500" height="500"  alt="{{ blog.title }}" />
+  </div>
+  <div class="blog-card-body">
+    <h3 class="blog-title">{{ blog.title }}</h3>
+    <p class="blog-author">By {{ blog.author }} | {{ blog.date | date: 'longDate' }}</p>
+    <p class="blog-excerpt">{{ blog.excerpt }}</p>
+  </div>
+  <div class="blog-card-footer">
+    <a class="read-more" [routerLink]="['/blog', blog.id]">Read More</a>
+  </div>
+</div>
