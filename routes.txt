@@ -2,6 +2,12 @@
 /blog/2
 /blog/3
 /blog/4
+/blog/5
+/blog/6
+/blog/7
+/blog/8
+/blog/9
+/blog/10
 /404
 /login
 /signup

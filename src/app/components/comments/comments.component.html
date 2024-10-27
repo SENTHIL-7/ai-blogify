@@ -1,18 +1,20 @@
 <div class="comments-section">
   <h3>Comments</h3>
   <div class="comment-form">
-    <input type="text" [(ngModel)]="username" placeholder="Your Name" />
-    <textarea [(ngModel)]="newComment" placeholder="Add a comment..." rows="4"></textarea>
+    <input type="text" [(ngModel)]="username" placeholder="Your Name" class="form-control" />
+    <textarea [(ngModel)]="newComment" placeholder="Add a comment..." rows="4" class="form-control"></textarea>
     <br>
-    <button (click)="addComment()">Submit</button>
+    <button (click)="addComment()" class="btn btn-primary">Submit</button>
   </div>
 
   <div class="comments-list">
     @for(comment of comments; track i ;let i = $index){
     <div class="comment">
-      <strong>{{ comment.username }}</strong>
+      <div class="comment-header">
+        <strong>{{ comment.username }}</strong>
+        <span>{{ comment.date | date:'short' }}</span>
+      </div>
       <p>{{ comment.content }}</p>
-      <span>{{ comment.date | date:'short' }}</span>
     </div>
     }
 
