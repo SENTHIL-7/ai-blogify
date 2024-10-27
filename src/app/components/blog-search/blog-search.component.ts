@@ -22,35 +22,48 @@ export class BlogSearchComponent implements OnInit  {
   currentPage = 1;
   paginatedBlogs:Blog[] = [];
   totalPages = 1;
+  /**
+   * Lifecycle hook to initialize the component
+   */
   ngOnInit(): void {
-    if(typeof window !== 'undefined'){
-      // setInterval(() =>{
-      //   console.log('Entering');
-      //   // this.tem +=1
-      // },1000)
-    }
+    /**
+     * Calculate the total number of pages based on the filtered blogs and the page size
+     */
     this.totalPages = Math.ceil(this.filteredBlogs.length / this.pageSize);
+    /**
+     * Update the paginated blogs based on the current page and the total number of pages
+     */
     this.updatePaginatedBlogs();
   }
-  onSearch(){
-    this.filterBlogs()
-  }
 
-  // Method to filter blogs based on search query
-  filterBlogs() {
-    if (this.searchQuery) {
-      this.filteredBlogs = this.blogs.filter(blog =>
-        blog.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        blog.author.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        blog.excerpt.toLowerCase().includes(this.searchQuery.toLowerCase())
+   filterBlogs() {
+    const searchQuery = this.searchQuery.toLowerCase();
+    if (searchQuery) {
+      this.filteredBlogs = this.blogs.filter(
+        ({ title, author, excerpt }) =>
+          title.toLowerCase().includes(searchQuery) ||
+          author.toLowerCase().includes(searchQuery) ||
+          excerpt.toLowerCase().includes(searchQuery)
       );
     } else {
       this.filteredBlogs = this.blogs;
     }
+
     this.totalPages = Math.ceil(this.filteredBlogs.length / this.pageSize);
-    this.currentPage=1;
-    this.updatePaginatedBlogs()
+    this.currentPage = 1;
+    this.updatePaginatedBlogs();
   }
+  /**
+   * Updates the paginated blogs based on the current page and the total number of pages
+   *
+   * Slices the filtered blogs array to get the blogs for the current page
+   * and assigns them to the paginated blogs array
+   *
+   * @param {number} currentPage The current page number
+   * @param {number} totalPages The total number of pages
+   * @param {Blog[]} filteredBlogs The filtered blogs array
+   * @param {number} pageSize The number of blogs per page
+   */
   updatePaginatedBlogs() {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
