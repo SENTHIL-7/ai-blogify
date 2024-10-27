@@ -1,15 +1,26 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
-
+import { QuillEditorComponent } from 'ngx-quill';
 @Component({
   selector: 'app-create-blog',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule,QuillEditorComponent],
   templateUrl: './create-blog.component.html',
   styleUrl: './create-blog.component.scss'
 })
 export class CreateBlogComponent {
-  blogForm: FormGroup;
+  blogForm: FormGroup ;
+  quillModules = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],
+      ['blockquote', 'code-block'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ indent: '-1' }, { indent: '+1' }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ color: [] }, { background: [] }],
+      ['link', 'image', 'video']
+    ]
+  };
 
   constructor(private fb: FormBuilder) {
     this.blogForm = this.fb.group({

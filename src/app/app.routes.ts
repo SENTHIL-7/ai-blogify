@@ -13,6 +13,14 @@ export const routes: Routes = [
         path: 'blog/:id', 
         loadComponent: () => import('./components/blog-detail/blog-detail.component').then(m => m.BlogDetailComponent) 
       },
+      {
+        path: 'create-blog',
+        loadComponent: () => import('./admin/components/create-blog/create-blog.component').then(m => m.CreateBlogComponent), // Default path to BlogSearchComponent
+      },
+      {
+        path: 'blog-list',  
+        loadComponent: () => import('./admin/components/blog-list/blog-list.component').then(m => m.BlogListComponent)
+      },
     ],
   },
   { path: 'login', loadComponent: () => import('./auth/components/login/login.component').then(m => m.LoginComponent) },

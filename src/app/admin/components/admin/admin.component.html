@@ -1,8 +1,19 @@
 <div class="admin-layout">
-    <p-panelMenu [model]="menuItems" styleClass="sidebar"></p-panelMenu>
-  
-    <main class="content">
-      <router-outlet></router-outlet>
-    </main>
-  </div>
-  
+  <aside class="sidebar" [ngClass]="{'collapsed': isCollapsed}">
+    <button (click)="toggleSidebar()" class="toggle-btn">
+      <span *ngIf="!isCollapsed">&#x25C0; Close</span>
+      <span *ngIf="isCollapsed">&#x25B6; Open</span>
+    </button>
+    <nav>
+      <ul>
+        <li><a routerLink="dashboard">Dashboard</a></li>
+        <li><a routerLink="create-blog">Create Blog</a></li>
+        <li><a routerLink="blog-list">Blog List</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

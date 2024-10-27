@@ -17,9 +17,11 @@
         />
         @if(dropdownOpen){
           <div class="dropdown-content" >
-            <a href="/profile">My Profile</a>
-            <a href="/settings">Settings</a>
-            <a href="#" (click)="logout()">Logout</a>
+            <a routerLink="profile" (click)="toggleDropdown()">My Profile</a>
+            <a routerLink="settings" (click)="toggleDropdown()">Settings</a>
+            <a routerLink="create-blog" (click)="toggleDropdown()">Create Blog</a>
+            <a routerLink="blog-list" (click)="toggleDropdown()">My blogs</a>
+            <a routerLink="login" (click)="logout()">Logout</a>
           </div>
         }
 
