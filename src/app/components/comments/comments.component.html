@@ -11,7 +11,7 @@
     @for(comment of comments; track i ;let i = $index){
     <div class="comment">
       <div class="comment-header">
-        <strong>{{ comment.username }}</strong>
+        <strong>{{ comment.username }}</strong>&nbsp;
         <span>{{ comment.date | date:'short' }}</span>
       </div>
       <p>{{ comment.content }}</p>
