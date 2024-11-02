@@ -1,5 +1,5 @@
-
-.app-background {
+.app-background::before {
+    z-index: -2;
     position: relative;
     min-height: 100vh;
     overflow: hidden;
@@ -8,6 +8,7 @@
   
   /* Add blurred, gradient-filled circles */
   .circle {
+    z-index: -1;
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);

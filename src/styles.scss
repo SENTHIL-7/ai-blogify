@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import url('https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.core.css');
+@import url('https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css');
 $primary-color:#3498db;
 $secondary-color:#333;
 $text-color:#333;
@@ -20,7 +21,15 @@ $text-color:#333;
 [data-theme="dark"] {
   --background-color: #1a1a1a; /* Dark theme background */
   --text-color: #f0f0f0; /* Dark theme text */
+  // --text-color: #828282; /* Dark theme text */
   --primary-color: #d474d1;
+}
+
+[data-theme="light"] {
+  --primary-color: #eb89e0;
+  --secondary-color: #333;
+  --text-color: #333;
+  --background-color: #fff;
 }
 
 /* Apply theme variables to body */
