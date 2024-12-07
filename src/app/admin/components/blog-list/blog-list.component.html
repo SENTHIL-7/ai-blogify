@@ -1,6 +1,6 @@
 <div class="blog-list">
-  <h2>Blog List</h2>
-  <table>
+  <h2 class="title">Blog List</h2>
+  <table class="table-container">
     <thead>
       <tr>
         <th>Title</th>
@@ -14,8 +14,10 @@
           <td>{{ blog.title }}</td>
           <td>{{ blog.excerpt }}</td>
           <td>
-            <button (click)="editBlog(blog)">Edit</button>
-            <button (click)="deleteBlog(blog)" class="danger">Delete</button>
+            <div class="button-wrapper">
+              <button (click)="editBlog(blog)">Edit</button>
+              <button (click)="deleteBlog(blog)" class="danger">Delete</button>
+            </div>
           </td>
         </tr>
       }

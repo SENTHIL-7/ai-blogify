@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="navbar-logo">
-    <a routerLink="/">My Blog</a>
+    <a routerLink="/">Blog</a>
   </div>
   <button (click)="toggleTheme()" class="theme-toggle">
     {{ isDarkMode ? '🌞 Light Mode' : '🌙 Dark Mode' }}
@@ -17,10 +17,10 @@
         />
         @if(dropdownOpen){
           <div class="dropdown-content" >
-            <a routerLink="profile" (click)="toggleDropdown()">My Profile</a>
-            <a routerLink="settings" (click)="toggleDropdown()">Settings</a>
-            <a routerLink="create-blog" (click)="toggleDropdown()">Create Blog</a>
-            <a routerLink="blog-list" (click)="toggleDropdown()">My blogs</a>
+            <a routerLink="admin/profile" (click)="toggleDropdown()">My Profile</a>
+            <a routerLink="admin/settings" (click)="toggleDropdown()">Settings</a>
+            <a routerLink="admin/create-blog" (click)="toggleDropdown()">Create Blog</a>
+            <a routerLink="admin/blog-list" (click)="toggleDropdown()">My blogs</a>
             <a routerLink="login" (click)="logout()">Logout</a>
           </div>
         }

@@ -1,14 +1,29 @@
+.table-container{
+  margin: 10px;
+  border: 1px solid #ddd;
+}
+
 .blog-list table {
-    width: 100%;
     border-collapse: collapse;
   }
   
   .blog-list th, .blog-list td {
     padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd;
   }
-  
+  .blog-list th{
+    text-align: center;
+  }
+  .blog-list td {
+    text-align: left;
+  }
+  .button-wrapper {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+  }
   button {
     padding: 6px 12px;
     border: none;
@@ -26,3 +41,8 @@
     opacity: 0.9;
   }
   
+.title{
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}

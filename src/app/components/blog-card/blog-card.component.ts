@@ -11,5 +11,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './blog-card.component.scss'
 })
 export class BlogCardComponent {
-  @Input()  blog: Blog = BLOGS[0];
+  @Input()  blog!: Blog ;
 }

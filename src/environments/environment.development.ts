@@ -8,5 +8,6 @@ export const environment = {
       messagingSenderId: "***",
       appId: "***",
       measurementId: "***"
-      }
+      },
+      backendUrl: 'http://localhost:3001/v1/'
   };    

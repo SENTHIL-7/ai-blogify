@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Blog, BLOGS } from '../../constants/blog.constants';
 import { BlogCardComponent } from "../blog-card/blog-card.component";
 import { FormsModule } from '@angular/forms';
+import { BlogService } from '../../services/blog.service';
 
 @Component({
   selector: 'app-blog-search',
@@ -11,12 +12,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './blog-search.component.scss'
 })
 export class BlogSearchComponent implements OnInit  {
-  constructor() {
+  constructor(private blogService: BlogService) {
     
   }
   searchQuery: string = '';
-  blogs: Blog[] = BLOGS;
-  filteredBlogs: Blog[] = BLOGS;
+  blogs!: Blog[] ;
+  filteredBlogs!: Blog[];
   
   pageSize = 6; // Number of blogs per page
   currentPage = 1;
@@ -26,7 +27,12 @@ export class BlogSearchComponent implements OnInit  {
    * Lifecycle hook to initialize the component
    */
   ngOnInit(): void {
-    /**
+
+    this.blogService.getBloglist().subscribe((data:any) => {
+      console.log('getBloglist',data);
+      this.blogs = data;
+      this.filteredBlogs=this.blogs;
+          /**
      * Calculate the total number of pages based on the filtered blogs and the page size
      */
     this.totalPages = Math.ceil(this.filteredBlogs.length / this.pageSize);
@@ -34,15 +40,16 @@ export class BlogSearchComponent implements OnInit  {
      * Update the paginated blogs based on the current page and the total number of pages
      */
     this.updatePaginatedBlogs();
+    })
   }
 
    filterBlogs() {
     const searchQuery = this.searchQuery.toLowerCase();
     if (searchQuery) {
       this.filteredBlogs = this.blogs.filter(
-        ({ title, author, excerpt }) =>
+        ({ title, excerpt }) =>
           title.toLowerCase().includes(searchQuery) ||
-          author.toLowerCase().includes(searchQuery) ||
+          // author.toLowerCase().includes(searchQuery) ||
           excerpt.toLowerCase().includes(searchQuery)
       );
     } else {
