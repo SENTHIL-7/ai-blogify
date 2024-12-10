@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { QuillEditorComponent } from 'ngx-quill';
 import { AdminBlogService } from '../../../services/admin-blog.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-create-blog',
   standalone: true,
@@ -25,7 +25,7 @@ export class CreateBlogComponent implements OnInit  {
     ]
   };
 
-  constructor(private fb: FormBuilder, private adminBlogService: AdminBlogService,private route: ActivatedRoute ) {
+  constructor(private fb: FormBuilder, private adminBlogService: AdminBlogService,private route: ActivatedRoute,private router:Router ) {
     this.blogForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
       excerpt: ['', [Validators.required, Validators.maxLength(150)]],
@@ -57,6 +57,7 @@ export class CreateBlogComponent implements OnInit  {
             console.log('Blog updated successfully:', response);
             this.blogForm.reset();
             alert('Blog updated successfully!');  
+            this.router.navigate(['/admin/blog-list']);
           },
           error: (error) => {
             console.error('Error updating blog:', error);
