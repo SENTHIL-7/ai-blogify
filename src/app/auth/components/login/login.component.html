@@ -2,14 +2,14 @@
   <div class="auth-box">
     <h2 class="auth-title">Login</h2>
     <!-- Email Login Form -->
-    <form (submit)="onEmailLogin()">
+    <form [formGroup]="loginForm" (submit)="onEmailLogin()">
       <div class="input-container">
         <label>Email</label>
-        <input type="email" [(ngModel)]="email" name="email" placeholder="Enter your email" required />
+        <input type="email" formControlName="email" placeholder="Enter your email" required />
       </div>
       <div class="input-container">
         <label>Password</label>
-        <input type="password" [(ngModel)]="password" name="password" placeholder="Enter your password" required />
+        <input type="password" formControlName="password" placeholder="Enter your password" required />
       </div>
       <button type="submit" class="auth-button">Login with Email</button>
     </form>
