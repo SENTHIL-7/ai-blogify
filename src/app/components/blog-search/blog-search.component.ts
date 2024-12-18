@@ -35,7 +35,7 @@ export class BlogSearchComponent implements OnInit  {
           /**
      * Calculate the total number of pages based on the filtered blogs and the page size
      */
-    this.totalPages = Math.ceil(this.filteredBlogs.length / this.pageSize);
+    this.totalPages = Math.ceil(this.filteredBlogs?.length / this.pageSize);
     /**
      * Update the paginated blogs based on the current page and the total number of pages
      */
@@ -56,7 +56,7 @@ export class BlogSearchComponent implements OnInit  {
       this.filteredBlogs = this.blogs;
     }
 
-    this.totalPages = Math.ceil(this.filteredBlogs.length / this.pageSize);
+    this.totalPages = Math.ceil(this.filteredBlogs?.length / this.pageSize);
     this.currentPage = 1;
     this.updatePaginatedBlogs();
   }
@@ -74,7 +74,7 @@ export class BlogSearchComponent implements OnInit  {
   updatePaginatedBlogs() {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
-    this.paginatedBlogs = this.filteredBlogs.slice(startIndex, endIndex);
+    this.paginatedBlogs = this.filteredBlogs?.slice(startIndex, endIndex);
   }
 
   nextPage() {

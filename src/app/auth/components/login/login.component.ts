@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
-
+    this.authService.isLoggedIn.set(false);
   }
   // constructor(private authService: AuthConfigService) {}
 
@@ -28,16 +29,7 @@ export class LoginComponent {
     // Implement email and password login logic here
     console.log('Logging in with Email:', this.loginForm.value);
     if(this.loginForm.valid){
-      this.authService.login(this.loginForm.value).subscribe({
-        next: (response) => {
-          console.log('Login successful:', response);
-          // Handle successful login here
-        },
-        error: (error) => {
-          console.error('Login failed:', error);
-          // Handle login error here
-        }
-      });
+      this.authService.login(this.loginForm.value)
     }
     else{
       alert('Invalid form');

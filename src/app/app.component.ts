@@ -8,7 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
   standalone: true,
   imports: [RouterOutlet, BlogSearchComponent, HeaderComponent], 
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'angularblog';
