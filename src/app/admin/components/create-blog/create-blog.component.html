@@ -50,6 +50,6 @@
       <input id="tags" formControlName="tags" type="text" placeholder="e.g., tech, programming" />
       <small>Add comma-separated tags</small>
     </div>
-    <button type="submit" [disabled]="blogForm.invalid" class="btn-create-blog">{{!blogId ? 'Create Blog' : 'Update Blog'}}</button>
+    <button type="submit" [disabled]="isButtonDisabled" class="btn-create-blog">{{!blogId ? 'Create Blog' : 'Update Blog'}}</button>
   </form>
 </div>

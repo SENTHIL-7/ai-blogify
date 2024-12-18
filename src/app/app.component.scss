@@ -1,64 +1,64 @@
-.app-background::before {
-    z-index: -2;
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
-    background: var(--background-color); /* Light base background */
-  }
+// .app-background::before {
+//     z-index: -2;
+//     position: relative;
+//     min-height: 100vh;
+//     overflow: hidden;
+//     background: var(--background-color); /* Light base background */
+//   }
   
-  /* Add blurred, gradient-filled circles */
-  .circle {
-    z-index: -1;
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    animation: pulse 8s ease-in-out infinite;
-  }
+//   /* Add blurred, gradient-filled circles */
+//   .circle {
+//     z-index: -1;
+//     position: absolute;
+//     border-radius: 50%;
+//     filter: blur(80px);
+//     animation: pulse 8s ease-in-out infinite;
+//   }
   
-  /* Define individual circles with specific sizes, colors, and positions */
-  .circle-1 {
-    width: 200px;
-    height: 200px;
-    top: 15%;
-    left: 10%;
-    background: var(--circle-color-1);
-  }
+//   /* Define individual circles with specific sizes, colors, and positions */
+//   .circle-1 {
+//     width: 200px;
+//     height: 200px;
+//     top: 15%;
+//     left: 10%;
+//     background: var(--circle-color-1);
+//   }
   
-  .circle-2 {
-    width: 300px;
-    height: 300px;
-    top: 50%;
-    left: 60%;
-    background: var(--circle-color-2);
-  }
+//   .circle-2 {
+//     width: 300px;
+//     height: 300px;
+//     top: 50%;
+//     left: 60%;
+//     background: var(--circle-color-2);
+//   }
   
-  .circle-3 {
-    width: 250px;
-    height: 250px;
-    top: 80%;
-    left: 20%;
-    background: var(--circle-color-3);
-  }
+//   .circle-3 {
+//     width: 250px;
+//     height: 250px;
+//     top: 80%;
+//     left: 20%;
+//     background: var(--circle-color-3);
+//   }
   
-  .circle-4 {
-    width: 180px;
-    height: 180px;
-    top: 30%;
-    right: 20%;
-    background: var(--circle-color-1);
-  }
+//   .circle-4 {
+//     width: 180px;
+//     height: 180px;
+//     top: 30%;
+//     right: 20%;
+//     background: var(--circle-color-1);
+//   }
   
-  .circle-5 {
-    width: 150px;
-    height: 150px;
-    bottom: 10%;
-    right: 40%;
-    background: var(--circle-color-2);
-  }
+//   .circle-5 {
+//     width: 150px;
+//     height: 150px;
+//     bottom: 10%;
+//     right: 40%;
+//     background: var(--circle-color-2);
+//   }
   
-  /* Subtle pulse animation for the blurred circles */
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
+//   /* Subtle pulse animation for the blurred circles */
+//   @keyframes pulse {
+//     0%, 100% { transform: scale(1); }
+//     50% { transform: scale(1.1); }
+//   }
   

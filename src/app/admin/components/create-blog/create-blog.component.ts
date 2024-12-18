@@ -24,7 +24,7 @@ export class CreateBlogComponent implements OnInit  {
       ['link', 'image', 'video']
     ]
   };
-
+  isButtonDisabled = true;
   constructor(private fb: FormBuilder, private adminBlogService: AdminBlogService,private route: ActivatedRoute,private router:Router ) {
     this.blogForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
@@ -46,10 +46,17 @@ export class CreateBlogComponent implements OnInit  {
             console.error('Error fetching blog:', error);
           }
         });
+        this.blogForm.valueChanges.subscribe(() => {
+          this.isButtonDisabled = !this.blogForm.valid || !this.blogForm.dirty;
+        })
       }
   }
   onSubmit() {
     if (this.blogForm.valid) {
+      if(!this.blogForm.dirty){
+        alert('Please fill at least one field.');
+        return;
+      }
       const newBlog = this.blogForm.value;
       if(this.blogId){
         this.adminBlogService.updateBlog(this.blogId,newBlog).subscribe({

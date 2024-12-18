@@ -31,7 +31,15 @@ export class AuthService {
      this.removeToken();
      this.router.navigate(['login']);
   }
-
+  isAuthenticated(){
+    const token = this.getToken();
+    if(token){
+      this.isLoggedIn.set(true);
+      return true;
+    }
+    this.isLoggedIn.set(false);
+    return false;
+  }
   setToken(token: string) {
     if (isPlatformServer(this.platformId)) {
       // On server, store token in transfer state

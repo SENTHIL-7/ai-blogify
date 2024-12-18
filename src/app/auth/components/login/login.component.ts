@@ -22,6 +22,7 @@ export class LoginComponent {
       password: ['', Validators.required]
     });
     this.authService.isLoggedIn.set(false);
+    this.authService.removeToken();
   }
   // constructor(private authService: AuthConfigService) {}
 
@@ -29,7 +30,7 @@ export class LoginComponent {
     // Implement email and password login logic here
     console.log('Logging in with Email:', this.loginForm.value);
     if(this.loginForm.valid){
-      this.authService.login(this.loginForm.value)
+      this.authService.login(this.loginForm.value);
     }
     else{
       alert('Invalid form');
