@@ -24,7 +24,6 @@ export class CreateBlogComponent implements OnInit  {
       ['link', 'image', 'video']
     ]
   };
-  isButtonDisabled = true;
   constructor(private fb: FormBuilder, private adminBlogService: AdminBlogService,private route: ActivatedRoute,private router:Router ) {
     this.blogForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
@@ -46,9 +45,6 @@ export class CreateBlogComponent implements OnInit  {
             console.error('Error fetching blog:', error);
           }
         });
-        this.blogForm.valueChanges.subscribe(() => {
-          this.isButtonDisabled = !this.blogForm.valid || !this.blogForm.dirty;
-        })
       }
   }
   onSubmit() {
