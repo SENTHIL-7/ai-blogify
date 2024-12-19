@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import {  provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import {  HttpErrorResponse, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -12,6 +12,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { AuthConfigService } from './services/auth-config.service';
 import { isPlatformBrowser } from '@angular/common';
 import { AuthService } from './auth/services/auth.service';
+import { catchError, throwError } from 'rxjs';
   
 export function tokenInterceptor(request:any, next:any) {
   const authService = inject(AuthService);
@@ -24,7 +25,12 @@ export function tokenInterceptor(request:any, next:any) {
     });
     return next(clonedRequest);
   }
-  return next(request);
+  return next(request).pipe(catchError((err) => {
+    if (err instanceof HttpErrorResponse && err.status === 401) {
+      authService.logout();
+    }
+    return throwError(()=>err);
+}));
   }
  
 export function initializeAppAuth(authConfigService: AuthConfigService) {
