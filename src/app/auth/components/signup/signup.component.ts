@@ -1,22 +1,32 @@
 import { Component } from '@angular/core';
-import { AuthConfigService } from '../../../services/auth-config.service';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule ],
+  imports: [FormsModule,RouterLink,ReactiveFormsModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
-  email: string = '';
-  password: string = '';
-
-  // constructor(private authService: AuthConfigService) {}
+  siginupForm = new FormGroup({
+    name :  new FormControl('',Validators.required),
+    email :  new FormControl('',[Validators.required , Validators.email]),
+    password :  new FormControl('',[Validators.required,Validators.minLength(5)]),
+  });
+  constructor(private authService: AuthService) {}
 
   onEmailSignup() {
     // Implement email and password signup logic here
-    console.log('Signing up with Email:', this.email, this.password);
+    // console.log('Signing up with Email:', this.email, this.password);
+    if(this.siginupForm.valid){
+      console.log(this.siginupForm.value);
+      this.authService.signup(this.siginupForm.value);
+    }
+    else{
+      alert('email or password is not valid');
+    }
   }
 
   signUpWithOAuth() {

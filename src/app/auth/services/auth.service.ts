@@ -9,6 +9,7 @@ const TOKEN_KEY = makeStateKey<string>('auth_token');
 })
 export class AuthService {
   isLoggedIn = signal(false);
+  user: any;
   constructor(private http: HttpService,private router: Router, @Inject(PLATFORM_ID) private platformId: Object,
   private transferState: TransferState) { }
   login(data:any){
@@ -22,6 +23,7 @@ export class AuthService {
       },
       error: (error) => {
         console.error('Login failed:', error);
+        alert('email or password is not valid');
         // Handle login error here
       }
     });;
@@ -66,4 +68,19 @@ export class AuthService {
      localStorage.removeItem('auth_token');
     }
   }
+
+  signup(data:any){
+    return this.http.post('signup',data).subscribe({
+      next: (response:any) => {  
+        console.log('Signin successful:', response);        
+        // Handle successful login here 
+        this.router.navigate(['login']);
+      },  
+      error: (error) => {
+        console.error('Signin failed:', error);
+        alert('email or password is not valid');
+        // Handle login error here
+      }
+    });
+      }
 }

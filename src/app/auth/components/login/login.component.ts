@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule],
+  imports: [FormsModule,ReactiveFormsModule,RouterLink],
   templateUrl: './login.component.html',
   // styleUrl: './login.component.scss'
   styleUrl: '../signup/signup.component.scss'
@@ -33,7 +33,7 @@ export class LoginComponent {
       this.authService.login(this.loginForm.value);
     }
     else{
-      alert('Invalid form');
+      alert('email or password is not valid');
     }
   }
 

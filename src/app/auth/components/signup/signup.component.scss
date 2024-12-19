@@ -90,3 +90,18 @@
   height: 1px;
   background-color: #ddd;
 }
+
+.signup-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+  a{
+    color: blue;
+    text-decoration: none;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+}

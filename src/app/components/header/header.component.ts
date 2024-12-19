@@ -9,7 +9,7 @@ import { AuthService } from '../../auth/services/auth.service';
   standalone: true,
   imports: [RouterOutlet,RouterLink],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   isLoggedIn = computed(() => this.authService.isLoggedIn());
@@ -40,6 +40,7 @@ export class HeaderComponent {
   }
 
   navigateToLogin() {
+    this.toggleDropdown();
     this.router.navigate(['/login']);
   }
 
