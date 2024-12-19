@@ -17,20 +17,21 @@ import { catchError, throwError } from 'rxjs';
 export function tokenInterceptor(request:any, next:any) {
   const authService = inject(AuthService);
   const token = authService.getToken();
+  
   if (token) {
     const clonedRequest = request.clone({
       setHeaders: {
         Authorization: token
       }
     });
-    return next(clonedRequest);
+    return next(clonedRequest).pipe(catchError((err) => {
+      if (err instanceof HttpErrorResponse && err.status === 401) {
+        authService.logout();
+      }
+      return throwError(()=>err);
+  }));;
   }
-  return next(request).pipe(catchError((err) => {
-    if (err instanceof HttpErrorResponse && err.status === 401) {
-      authService.logout();
-    }
-    return throwError(()=>err);
-}));
+  return next(request)
   }
  
 export function initializeAppAuth(authConfigService: AuthConfigService) {
