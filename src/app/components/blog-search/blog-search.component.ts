@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Blog, BLOGS } from '../../constants/blog.constants';
 import { BlogCardComponent } from "../blog-card/blog-card.component";
 import { FormsModule } from '@angular/forms';
 import { BlogService } from '../../services/blog.service';
+import { Blog } from '../../model/blog.models';
 
 @Component({
   selector: 'app-blog-search',

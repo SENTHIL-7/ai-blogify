@@ -36,8 +36,8 @@ textarea {
   height: 100px;
 }
 
-small {
-  color: #666;
+.error {
+  color: red;
   font-size: 14px;
 }
 
@@ -57,4 +57,17 @@ small {
 .btn-create-blog:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+.btn-prompt{
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.genai-button-container{
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
 }

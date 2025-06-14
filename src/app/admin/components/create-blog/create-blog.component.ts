@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { QuillEditorComponent } from 'ngx-quill';
 import { AdminBlogService } from '../../../services/admin-blog.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PromptDialogComponent } from '../../../components/prompt-dialog/prompt-dialog.component';
 @Component({
   selector: 'app-create-blog',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule,QuillEditorComponent],
+  imports: [FormsModule, ReactiveFormsModule,QuillEditorComponent,PromptDialogComponent],
   templateUrl: './create-blog.component.html',
   styleUrl: './create-blog.component.scss'
 })
@@ -33,7 +34,7 @@ export class CreateBlogComponent implements OnInit  {
       tags: ['']
     });
   }
-
+  showPrompt = signal(false);
   ngOnInit(): void {
       this.blogId = +(this.route?.snapshot?.paramMap?.get('id') ?? 0);
       if(this.blogId){
@@ -47,10 +48,14 @@ export class CreateBlogComponent implements OnInit  {
         });
       }
   }
+  setContent(content: string) {
+    console.log('Setting content:', content);
+    this.blogForm.patchValue({ content: content });
+  }
   onSubmit() {
     if (this.blogForm.valid) {
       if(!this.blogForm.dirty){
-        alert('Please fill at least one field.');
+        alert('No changes made to the blog.');
         return;
       }
       const newBlog = this.blogForm.value;
@@ -85,5 +90,8 @@ export class CreateBlogComponent implements OnInit  {
     } else {
       alert('Please fill all required fields.');
     }
+  }
+  openPrompt() {
+    this.showPrompt.set(true);
   }
 }

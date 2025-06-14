@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../../../services/blog.service';
 import { AdminBlogService } from '../../../services/admin-blog.service';
-import { Blog } from '../../../constants/blog.constants';
 import { Router } from '@angular/router';
+import { Blog } from '../../../model/blog.models';
 @Component({
   selector: 'app-blog-list',
   standalone: true,

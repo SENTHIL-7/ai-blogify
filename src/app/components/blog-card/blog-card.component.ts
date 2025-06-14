@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Blog, BLOGS } from '../../constants/blog.constants';
 import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Blog } from '../../model/blog.models';
 
 @Component({
   selector: 'app-blog-card',

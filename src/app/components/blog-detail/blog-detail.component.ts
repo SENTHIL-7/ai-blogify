@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { Blog, BLOGS } from '../../constants/blog.constants';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DatePipe, NgOptimizedImage } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { CommentsComponent } from '../comments/comments.component';
 import { BlogService } from '../../services/blog.service';
+import { Blog } from '../../model/blog.models';
 
 @Component({
   selector: 'app-blog-detail',
   standalone: true,
-  imports: [DatePipe,NgOptimizedImage,CommentsComponent],
+  imports: [DatePipe,CommentsComponent],
   templateUrl: './blog-detail.component.html',
   styleUrl: './blog-detail.component.scss'
 })

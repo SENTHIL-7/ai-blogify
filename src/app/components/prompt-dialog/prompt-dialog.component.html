@@ -1,0 +1,41 @@
+@if(showPrompt()){
+<div class="backdrop">
+  <div class="dialog">
+    <div class="header">
+      <h2>AI Prompt</h2>
+      <span class="material-symbols-outlined" (click)="closePrompt()"
+        >close
+      </span>
+    </div>
+    <div class="result" #resultContainer></div>
+    @if(!response){
+    <div class="noresponse">
+      <p>No response yet. Please enter a prompt and submit.</p>
+    </div>
+    }
+    <div class="actions">
+      <span class="material-symbols-outlined" (click)="copyToClipboard()">
+        content_copy
+      </span>
+      <button (click)="apply()">Apply</button>
+    </div>
+    <div class="prompt">
+      <input
+        type="text"
+        [(ngModel)]="promptText"
+        placeholder="Enter your prompt..."
+        (keyup.enter)="submitPrompt()"
+      />
+      <button (click)="submitPrompt()">
+        @if(isGenerating()){
+        <span class="material-symbols-outlined loading">
+          progress_activity
+        </span>
+        } @else {
+        <span class="material-symbols-outlined"> send </span>
+        }
+      </button>
+    </div>
+  </div>
+</div>
+}

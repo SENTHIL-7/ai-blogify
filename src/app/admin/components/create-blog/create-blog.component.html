@@ -1,27 +1,29 @@
 <div class="create-blog-container" data-theme="light">
   <h2>Create New Blog Post</h2>
-  <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+  <app-prompt-dialog [(showPrompt)]="showPrompt" [blogContent]="blogForm.get('content')?.value" (onApply)="setContent($event)"></app-prompt-dialog>
+  <form [formGroup]="blogForm">
     <div class="form-group">
       <label for="title">Title</label>
       <input id="title" formControlName="title" type="text" placeholder="Enter blog title" />
       @if(blogForm.get('title')?.invalid && blogForm.get('title')?.touched){
-        <small>
+        <div class="error">
           Title is required and must be at least 5 characters long.
-        </small>
+        </div>
       }
-
     </div>
   
     <div class="form-group">
       <label for="excerpt">Excerpt</label>
       <textarea id="excerpt" formControlName="excerpt" placeholder="Short description (max 150 characters)"></textarea>
       @if(blogForm.get('excerpt')?.invalid && blogForm.get('excerpt')?.touched){
-        <small>
+        <div class="error">
           Excerpt is required and must be less than 150 characters.
-        </small>
+        </div>
       }
     </div>
-  
+    <div class="genai-button-container">
+      <button class="btn-prompt" (click)="openPrompt()">Ask ai</button>
+    </div>
     <div class="form-group">
       <label for="content">Content</label>
       @if(blogForm.get('content')){
@@ -34,9 +36,9 @@
  
 
       @if(blogForm.get('content')?.invalid && blogForm.get('content')?.touched){
-        <small>
+        <div class="error">
           Content is required and must be at least 20 characters long.
-        </small>
+        </div>
       }
     </div>
   
@@ -48,8 +50,8 @@
     <div class="form-group">
       <label for="tags">Tags</label>
       <input id="tags" formControlName="tags" type="text" placeholder="e.g., tech, programming" />
-      <small>Add comma-separated tags</small>
+      <div style="color: rgb(99, 100, 100);font-size: 14px;">Add comma-separated tags</div>
     </div>
-    <button type="submit" [disabled]="!blogForm.valid" class="btn-create-blog">{{!blogId ? 'Create Blog' : 'Update Blog'}}</button>
+    <button type="submit" [disabled]="!blogForm.valid" (click)="onSubmit()" class="btn-create-blog">{{!blogId ? 'Create Blog' : 'Update Blog'}}</button>
   </form>
 </div>

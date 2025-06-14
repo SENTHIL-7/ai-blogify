@@ -19,7 +19,8 @@ export class AuthService {
         // Handle successful login here
         this.setToken(response.token);
         this.isLoggedIn.set(true);
-        this.router.navigate(['admin','dashboard']);
+        // this.router.navigate(['admin','dashboard']);
+        this.router.navigate(['admin','blog-list']);
       },
       error: (error) => {
         console.error('Login failed:', error);

@@ -1,3 +1,4 @@
+<div class="nav-container">
 <nav class="navbar">
   <div class="navbar-logo">
     <a routerLink="/">Blog</a>
@@ -18,8 +19,10 @@
         />
         @if(dropdownOpen){
           <div class="dropdown-content" >
-            <a routerLink="admin/profile" (click)="toggleDropdown()">My Profile</a>
-            <a routerLink="admin/settings" (click)="toggleDropdown()">Settings</a>
+            <!-- <a routerLink="admin/dashboard" (click)="toggleDropdown()">Dashboard</a> -->
+            <a routerLink="/blog" (click)="toggleDropdown()">view blogs</a>
+            <!-- <a routerLink="admin/profile" (click)="toggleDropdown()">My Profile</a>
+            <a routerLink="admin/settings" (click)="toggleDropdown()">Settings</a> -->
             <a routerLink="admin/create-blog" (click)="toggleDropdown()">Create Blog</a>
             <a routerLink="admin/blog-list" (click)="toggleDropdown()">My blogs</a>
             <a routerLink="login" (click)="logout()">Logout</a>
@@ -35,4 +38,5 @@
     }
   </div>
 </nav>
+</div>
 <router-outlet></router-outlet>
