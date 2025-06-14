@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { GoogleGenAI } from '@google/genai';
+import { HttpService } from './http.service';
 @Injectable({
   providedIn: 'root',
 })
 export class BlogGenerationService {
   ai = new GoogleGenAI({ apiKey: 'AIzaSyC2263eGFv0dX6_beXPpOqjHh1bARENVFs' });
-  constructor() {}
+  constructor(private http : HttpService) {}
 
   generateBlog(prompt: string, blogContent?: string) {
     return this.ai.models.generateContent({
@@ -54,5 +55,8 @@ export class BlogGenerationService {
       `.trim(),
       },
     });
+  }
+  getGeneratedBlog(queryparams: any) {
+     return this.http.get('api/generateBlog',queryparams);
   }
 }

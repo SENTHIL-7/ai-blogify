@@ -27,7 +27,7 @@
     <div class="form-group">
       <label for="content">Content</label>
       @if(blogForm.get('content')){
-        <quill-editor
+        <quill-editor style="width:100%;"
         [formControl]="$any(blogForm.get('content'))"
         [modules]="quillModules"
         [placeholder]="'Blog content here...'"
