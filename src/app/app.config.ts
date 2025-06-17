@@ -10,7 +10,6 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getFunctions, provideFunctions } from '@angular/fire/functions';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { AuthConfigService } from './services/auth-config.service';
-import { isPlatformBrowser } from '@angular/common';
 import { AuthService } from './auth/services/auth.service';
 import { catchError, throwError } from 'rxjs';
   
